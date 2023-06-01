@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Driver Registration</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <style>
+        .container {
+          max-width: 450px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: lightgrey;
+          border-radius: 8px;
+          border: 1px solid black;
+        }
+        
+        h1 {
+          text-align: center;
+          color: black;
+          margin-bottom: 20px;
+        }
+        
+        .form-group {
+          margin-left: 10px;
+          margin-right: 10px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+        
+        label {
+          display: block;
+          margin-bottom: 5px;
+          color: black;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="date"],
+        select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid black;
+          border-radius: 4px;
+        }
+        
+        button[type="submit"] {
+          width: 50%; /* Set a fixed width for buttons */
+          padding: 12px;
+          background-color: green;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        button[type="submit"]:not(#next-button) {
+          width: calc(50% - 5px); /* Adjusted width for other buttons to fit in 50% space */
+        }
+        
+        button[type="submit"]:hover {
+          background-color: blue;
+        }
+        
+        /* Additional Styling for Specific Elements */
+        
+        #email-phone {
+          width: calc(100% - 30px);
+          padding: 10px 15px;
+        }
+        
+        .password-toggle {
+          display: flex;
+          align-items: center;
+        }
+        
+        .password-toggle input[type="checkbox"] {
+          margin-right: 5px;
+        }
+        
+        .password-toggle .toggle-icon {
+          cursor: pointer;
+          font-size: 18px;
+        }
+        </style>
+        
+<div class="container">
+  <h1>Driver Registration</h1>
+
+  <form>
+    <div class="form-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email-phone">Email or Phone</label>
+      <input type="text" id="email-phone" name="email-phone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="license">Driving License Number</label>
+      <input type="text" id="license" name="license" required>
+    </div>
+
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state" name="state" required>
+        <option value="">Select State</option>
+        <option value="state1">State 1</option>
+        <option value="state2">State 2</option>
+        <option value="state3">State 3</option>
+        <!-- Add more options as needed -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+    </div>
+
+    <form>
+      <label for="password">Password:</label>
+      <div class="password-toggle">
+        <input type="password" id="password" name="password" required>
+        <i class="toggle-icon" id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')">&#128065;</i>
+      </div>
+
+      <label for="confirm-password">Confirm Password:</label>
+      <div class="password-toggle">
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <i class="toggle-icon" id="toggle-confirm-password" onclick="togglePasswordVisibility('confirm-password', 'toggle-confirm-password')">&#128065;</i>
+      </div>
+
+
+      <div class="form-group">
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </form>
+</div>
+
+ 
+ 
+<script>
+
+function togglePasswordVisibility(passwordFieldId, toggleIconId) {
+      var passwordField = document.getElementById(passwordFieldId);
+      var toggleIcon = document.getElementById(toggleIconId);
+
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.innerHTML = "&#128064;"; // Eye open symbol
+      } else {
+        passwordField.type = "password";
+        toggleIcon.innerHTML = "&#128065;"; // Eye closed symbol
+      }
+    }
+
+// Get form element
+var registrationForm = document.querySelector('form');
+
+// Add event listener for form submission
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get form input values
+  var fullName = document.getElementById('fullname').value;
+  var emailOrPhone = document.getElementById('email-phone').value;
+  var licenseNumber = document.getElementById('license').value;
+  var state = document.getElementById('state').value;
+  var dateOfBirth = document.getElementById('dob').value;
+  var password = document.getElementById('password').value;
+  var confirmPassword = document.getElementById('confirm-password').value;
+
+  // Perform validation and other necessary operations
+  // Here, you can add your own custom validation logic
+
+  // Example validation: Check if password and confirm password match
+  if (password !== confirmPassword) {
+    alert('Password and Confirm Password do not match');
+    return;
+  }
+
+  // Example: Display form data
+  console.log('Full Name:', fullName);
+  console.log('Email or Phone:', emailOrPhone);
+  console.log('License Number:', licenseNumber);
+  console.log('State:', state);
+  console.log('Date of Birth:', dateOfBirth);
+  console.log('Password:', password);
+  console.log('Confirm Password:', confirmPassword);
+
+  // TODO: Perform form submission and further processing (e.g., sending data to the server)
+});
+
+
+    </script>
+
+
+</body>
+</html>
